@@ -2,3 +2,4 @@ django-filter
 markdown
 djangorestframework
 Django
+requests
