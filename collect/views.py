@@ -3,6 +3,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 import requests
+import json
 
 
 
@@ -16,7 +17,7 @@ def candle(request):
         timeframe = request.query_params['timeframe']
 
         candles = requests.get(url = BASE_URL + f'/v2/candles/trade:{timeframe}:{symbol}/hist?limit=100').text
-
+        candles = json.dumps(candles)
     except:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
